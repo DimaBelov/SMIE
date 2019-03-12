@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -14,4 +14,8 @@
     <ProjectReference Include="..\SMIE.DAL\SMIE.DAL.csproj" />
   </ItemGroup>
 
+  <Target Name="GulpBuild" BeforeTargets="Build">
+    <Exec Command="gulp build" />
+  </Target>
+  
 </Project>
