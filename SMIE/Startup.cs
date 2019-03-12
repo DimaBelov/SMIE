@@ -30,8 +30,14 @@ namespace SMIE
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
+            services.AddAuthentication(
+                    options =>
+                    {
+                        options.DefaultChallengeScheme = AppConstants.DefaultAuthScheme;
+                        options.DefaultAuthenticateScheme = AppConstants.DefaultAuthScheme;
+                        options.DefaultScheme = AppConstants.DefaultAuthScheme;
+                    })
+                .AddCookie(AppConstants.DefaultAuthScheme, options =>
                 {
                     options.AccessDeniedPath = "/Account/Login";
                     options.LoginPath = "/Account/Login";
@@ -52,7 +58,9 @@ namespace SMIE
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseAuthentication();
+
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
