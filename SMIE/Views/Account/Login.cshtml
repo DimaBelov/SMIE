@@ -1,9 +1,9 @@
-﻿
+﻿@model SMIE.Models.LoginModel
+
 @{
     ViewData["Title"] = "Login";
+    Layout = "/Views/Shared/_Layout.cshtml";
 }
-
-@model SMIE.Models.LoginModel
 
 <h2>Login</h2>
 
@@ -28,3 +28,11 @@
     </div>
 </form>
 
+@section Styles {
+    @*<link href="/styles/pages/e-queue/e-queue.css" rel="stylesheet" />*@
+}
+
+@section Scripts {
+    @*<script src="/lib/moment-2.18.1/moment.min.js"></script>
+    <script src="/scripts/pages/e-queue/e-queue-common.js" asp-append-version="true"></script>*@
+}

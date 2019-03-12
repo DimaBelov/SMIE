@@ -60,7 +60,7 @@ namespace SMIE.Controllers
                     // добавляем пользователя в бд
                     await _userService.Add(new User { Email = model.Email, Password = model.Password });
 
-                    await Authenticate(model.Email); // аутентификация
+                    //await Authenticate(model.Email); // аутентификация
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -85,7 +85,7 @@ namespace SMIE.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(AppConstants.DefaultAuthScheme);
             return RedirectToAction("Login", "Account");
         }
     }
