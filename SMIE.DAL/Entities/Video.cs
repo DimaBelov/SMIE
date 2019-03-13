@@ -9,5 +9,7 @@
         public string Link { get; set; }
 
         public string Description { get; set; }
+
+        public string PosterLink { get; set; }
     }
 }

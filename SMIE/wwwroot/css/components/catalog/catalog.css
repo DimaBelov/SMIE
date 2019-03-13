@@ -1,4 +1,5 @@
-﻿.catalog-item > span {
+﻿.catalog-item > span,
+.catalog-item > a {
     display: inline-flex;
 }
 

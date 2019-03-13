@@ -3,21 +3,16 @@
 <div>
     <h3>Videos</h3>
     
-    <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
-        <source src='https://vk.com/video421084460_456239486' type='video/mp4'>
-        <p class='vjs-no-js'>
-            To view this video please enable JavaScript, and consider upgrading to a web browser that
-            <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-        </p>
-    </video>
-
     <ul class="list-group">
         @foreach (var item in Model.Videos)
         {
-            <li class="list-group-item catalog-item">
-                <span class="catalog-item-title">@item.Name</span>
-                <span>@item.Description</span>
-            </li>
+        <li class="list-group-item catalog-item">
+            <span class="catalog-item-title">@item.Name</span>
+            <span>@item.Description</span>
+            @*<a asp-area="" asp-controller="Video" asp-action="Watch" asp-route-model="@item">Watch</a>*@
+            @*@Html.ActionLink("Watch", "Watch", "Video", item, null)*@
+            <a href="/Video/@item.Id">Watch</a>
+        </li>
         }
     </ul>
 </div>
