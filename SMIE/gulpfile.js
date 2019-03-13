@@ -22,7 +22,7 @@ gulp.task("css", function () {
 
 // Scripts ----------------------------------------------------------------
 
-var scriptsStorage = "./wwwroot/dist/js/pages/";
+var scriptsStorage = "./wwwroot/dist/scripts/pages/";
 var pageScripts = "./wwwroot/js/pages/**/*.js";
 
 gulp.task("js", function () {

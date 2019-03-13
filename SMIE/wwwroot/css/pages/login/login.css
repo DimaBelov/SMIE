@@ -1,4 +1,9 @@
-﻿#asdas {
-    display: none;
-    width: 100px;
+﻿.form-group > label {
+    width: 70px;
+}
+
+.form-group > .form-control,
+.login-btn,
+.registration-btn {
+    width: 245px;
 }

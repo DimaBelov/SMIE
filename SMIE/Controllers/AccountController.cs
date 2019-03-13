@@ -37,7 +37,7 @@ namespace SMIE.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                ModelState.AddModelError("", "Incorrect login and (or) password");
             }
             return View(model);
         }
@@ -64,7 +64,7 @@ namespace SMIE.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                ModelState.AddModelError("", "This email is already registered");
             }
             return View(model);
         }

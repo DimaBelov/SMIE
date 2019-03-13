@@ -7,15 +7,15 @@ namespace SMIE.Models
         //[Required(ErrorMessage = "Не указан Username")]
         //public string Username { get; set; }
 
-        [Required(ErrorMessage = "Не указан Email")]
+        [Required(ErrorMessage = "No Email specified")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Не указан пароль")]
+        [Required(ErrorMessage = "A password is not specified")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Пароль введен неверно")]
+        [Compare("Password", ErrorMessage = "Password entered incorrectly")]
         public string ConfirmPassword { get; set; }
     }
 }
