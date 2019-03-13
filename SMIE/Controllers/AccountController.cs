@@ -76,6 +76,7 @@ namespace SMIE.Controllers
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
             };
+
             // создаем объект ClaimsIdentity
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookies", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             // установка аутентификационных куки
