@@ -1,0 +1,36 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SMIE</a>
+        </div>
+        
+        @if (User.Identity.IsAuthenticated)
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a asp-area="" asp-controller="Account" asp-action="Logout">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a asp-area="" asp-controller="Account" asp-action="SignUp">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Sign Up
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Account" asp-action="Login">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        Login
+                    </a>
+                </li>
+            </ul>
+        }
+    </div>
+</nav>

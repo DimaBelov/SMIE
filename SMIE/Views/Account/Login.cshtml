@@ -13,19 +13,19 @@
         <div class="form-group">
             <label asp-for="Email">Email</label>
             <input class="form-control" type="text" asp-for="Email" />
-            <span asp-validation-for="Email"></span>
+            <span class="text-danger" asp-validation-for="Email"></span>
         </div>
         <div class="form-group">
             <label asp-for="Password">Password</label>
             <input class="form-control" asp-for="Password" />
-            <span asp-validation-for="Password"></span>
+            <span class="text-danger" asp-validation-for="Password"></span>
         </div>
 
         <div class="form-group">
             <input type="submit" value="Login" class="btn btn-primary login-btn" />
         </div>
 
-        <a class="btn btn-default registration-btn" asp-action="Register" asp-controller="Account">Registration</a>
+        <a class="btn btn-default sign-up-btn" asp-action="SignUp" asp-controller="Account">Sign Up</a>
     </div>
 </form>
 

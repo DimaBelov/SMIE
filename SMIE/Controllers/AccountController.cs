@@ -43,14 +43,14 @@ namespace SMIE.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult SignUp()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public async Task<IActionResult> SignUp(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
