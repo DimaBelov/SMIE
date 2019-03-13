@@ -6,13 +6,17 @@
     <ul class="list-group">
         @foreach (var item in Model.Videos)
         {
-        <li class="list-group-item catalog-item">
-            <span class="catalog-item-title">@item.Name</span>
-            <span>@item.Description</span>
-            @*<a asp-area="" asp-controller="Video" asp-action="Watch" asp-route-model="@item">Watch</a>*@
-            @*@Html.ActionLink("Watch", "Watch", "Video", item, null)*@
-            <a href="/Video/@item.Id">Watch</a>
-        </li>
+            <li class="list-group-item catalog-item">
+                <a href="/Video/@item.Id">
+                    <img class="catalog-item-poster" src="@item.PosterLink" />
+                </a>
+                <div style="display: inline-block;">
+                    <span class="catalog-item-title">@item.Name</span>
+                    <div>
+                        <span>@item.Description</span>
+                    </div>
+                </div>
+            </li>
         }
     </ul>
 </div>

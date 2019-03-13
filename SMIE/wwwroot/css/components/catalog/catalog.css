@@ -1,8 +1,12 @@
-﻿.catalog-item > span,
-.catalog-item > a {
-    display: inline-flex;
+﻿.catalog-item > a:hover {
+    text-decoration: none;
 }
 
 .catalog-item-title {
     font-weight: bold;
+}
+
+.catalog-item-poster {
+    width: 100px;
+    height: 100px;
 }
