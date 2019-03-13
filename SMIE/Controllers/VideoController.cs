@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SMIE.DAL.Entities;
 using SMIE.DAL.Interfaces;
 
@@ -22,8 +21,8 @@ namespace SMIE.Controllers
         [Route("Video/{id}")]
         public IActionResult Watch(int? id)
         {
-            if(!id.HasValue)
-                throw new Exception("Video not found"); //TODO redirect to NotFound
+            if (!id.HasValue)
+                return NotFound();
 
             return View(_catalogService.Get(id.Value));
         }
