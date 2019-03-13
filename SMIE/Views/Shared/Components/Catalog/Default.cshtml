@@ -1,0 +1,19 @@
+﻿@model SMIE.Models.CatalogModel
+
+<div>
+    This is catalog
+
+    <ul>
+        @foreach (var item in Model.Videos)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+</div>
+
+<script>console.log('!!!')</script>
+
+@section Styles
+{ 
+    
+}
