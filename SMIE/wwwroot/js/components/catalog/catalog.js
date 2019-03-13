@@ -1,5 +1,9 @@
-﻿//$(document).ready(function() {
-    
-//});
-
-console.log('Catalog component');
+﻿$(document).ready(function() {
+    $.get("Catalog/Get")
+        .done(function (data) {
+            $("#catalog").html(data);
+        })
+        .fail(function (error) {
+            alert("error: " + error);
+        });
+});

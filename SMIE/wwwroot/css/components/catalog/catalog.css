@@ -1,2 +1,7 @@
-﻿body {
+﻿.catalog-item > span {
+    display: inline-flex;
+}
+
+.catalog-item-title {
+    font-weight: bold;
 }

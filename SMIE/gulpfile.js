@@ -29,6 +29,14 @@ gulp.task("css-components", function () {
         .pipe(gulp.dest(stylesStorage + 'components/'));
 });
 
+gulp.task("css-npm", function () {
+    return gulp.src([
+            "./node_modules/video.js/dist/video-js.min.css"
+        ])
+        .pipe(plumber({ errorHandler: handleError }))
+        .pipe(gulp.dest("./wwwroot/dist/styles/"));
+});
+
 // Scripts ----------------------------------------------------------------
 
 var scriptsStorage = "./wwwroot/dist/scripts/";
@@ -51,13 +59,23 @@ gulp.task("js-components", function () {
         .pipe(gulp.dest(scriptsStorage + 'components/'));
 });
 
+gulp.task("js-npm", function () {
+    return gulp.src([
+        "./node_modules/video.js/dist/video.min.js"
+    ])
+    .pipe(plumber({ errorHandler: handleError }))
+    .pipe(gulp.dest("./wwwroot/dist/scripts/"));
+});
+
 // Grouped build task -----------------------------------------------------
 
 gulp.task("build", [
     "css-pages",
     "css-components",
+    "css-npm",
     "js-pages",
-    "js-components"
+    "js-components",
+    "js-npm"
 ]);
 
 // Watching ---------------------------------------------------------------

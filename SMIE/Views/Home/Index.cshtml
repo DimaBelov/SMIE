@@ -6,17 +6,13 @@
 
 <div id="catalog"></div>
 
-@section Scripts
-    {
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script>
-        $.get("Catalog/Get")
-            .done(function (data) {
-                $("#catalog").html(data);
-            })
-            .fail(function(error) {
-                alert("error: " + error);
-            });
-    </script>
+@section Styles
+{
+    <link rel="stylesheet" href="/dist/styles/components/catalog/catalog.min.css" />
+}
 
+@section Scripts
+{
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="dist/scripts/components/catalog/catalog.min.js"></script>
 }
