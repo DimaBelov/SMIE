@@ -31,7 +31,8 @@ gulp.task("css-components", function () {
 
 gulp.task("css-npm", function () {
     return gulp.src([
-            "./node_modules/video.js/dist/video-js.min.css"
+            "./node_modules/video.js/dist/video-js.min.css",
+            "./node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"
         ])
         .pipe(plumber({ errorHandler: handleError }))
         .pipe(gulp.dest("./wwwroot/dist/styles/"));
@@ -61,7 +62,8 @@ gulp.task("js-components", function () {
 
 gulp.task("js-npm", function () {
     return gulp.src([
-        "./node_modules/video.js/dist/video.min.js"
+        "./node_modules/video.js/dist/video.min.js",
+        "./node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js"
     ])
     .pipe(plumber({ errorHandler: handleError }))
     .pipe(gulp.dest("./wwwroot/dist/scripts/"));
