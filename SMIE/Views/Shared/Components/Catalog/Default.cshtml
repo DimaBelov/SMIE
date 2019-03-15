@@ -1,12 +1,10 @@
 ﻿@model SMIE.Models.CatalogModel
 
 <div>
-    <h3>Videos</h3>
-    
-    <ul class="list-group">
+    <ul class="uk-list uk-list-divider">
         @foreach (var item in Model.Videos)
         {
-            <li class="list-group-item catalog-item">
+            <li class="catalog-item">
                 <a href="/Video/@item.Id">
                     <img class="catalog-item-poster" src="@item.PosterLink" />
                 </a>
