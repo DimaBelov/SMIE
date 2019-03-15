@@ -8,6 +8,8 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         @*<link rel="stylesheet" href="~/dist/styles/bootstrap-material-design.min.css" />*@
+        <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit.min.css" />
+        <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit-rtl.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -15,6 +17,8 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         @*<link rel="stylesheet" href="~/dist/styles/bootstrap-material-design.min.css" />*@
+        <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit.min.css" />
+        <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit-rtl.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     @RenderSection("Styles", required: false)
@@ -38,6 +42,8 @@
         <script src="~/dist/scripts/popper.min.js"></script>
         <script src="~/dist/scripts/popper-utils.min.js"></script>
         @*<script src="~/dist/scripts/bootstrap-material-design.min.js"></script>*@
+        <script src="~/lib/uikit-3.0.3/js/uikit.min.js"></script>
+        <script src="~/lib/uikit-3.0.3/js/uikit-icons.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
@@ -54,6 +60,8 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
         @*<script src="~/dist/scripts/bootstrap-material-design.min.js"></script>*@
+        <script src="~/lib/uikit-3.0.3/js/uikit.min.js"></script>
+        <script src="~/lib/uikit-3.0.3/js/uikit-icons.min.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
