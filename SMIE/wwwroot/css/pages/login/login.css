@@ -1,8 +1,4 @@
-﻿.form-group > label {
-    width: 70px;
-}
-
-.form-group > .form-control,
+﻿.uk-input,
 .login-btn,
 .sign-up-btn {
     width: 245px;

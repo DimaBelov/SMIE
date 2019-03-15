@@ -7,27 +7,31 @@
 
 <h2>Login</h2>
 
-<form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+<form class="uk-form-stacked" asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
     <div>
-        <div class="form-group">
-            <label asp-for="Email">Email</label>
-            <input class="form-control" type="text" asp-for="Email" />
+        <div class="uk-margin">
+            <label asp-for="Email" class="uk-form-label">Email</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" asp-for="Email" />
+            </div>
             <span class="text-danger" asp-validation-for="Email"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="Password">Password</label>
-            <input class="form-control" asp-for="Password" />
+        <div class="uk-margin">
+            <label asp-for="Password" class="uk-form-label">Password</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" asp-for="Password" />
+            </div>
             <span class="text-danger" asp-validation-for="Password"></span>
         </div>
-
-        <div class="form-group">
-            <input type="submit" value="Login" class="btn btn-primary login-btn" />
+        <div>
+            <input type="submit" value="Login" class="uk-button uk-button-primary login-btn" />
         </div>
 
-        <a class="btn btn-default sign-up-btn" asp-action="SignUp" asp-controller="Account">Sign Up</a>
+        <a class="uk-button uk-button-default sign-up-btn" asp-action="SignUp" asp-controller="Account">Sign Up</a>
     </div>
 </form>
+
 
 @section Styles {
     <link href="/dist/styles/pages/login/login.min.css" rel="stylesheet" />
