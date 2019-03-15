@@ -1,45 +1,4 @@
-﻿@*<div >
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                    SMIE
-                </a>
-            </div>
-
-            @if (User.Identity.IsAuthenticated)
-            {
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a asp-area="" asp-controller="Account" asp-action="Logout">
-                            <span class="glyphicon glyphicon-log-out"></span>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-            }
-            else
-            {
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a asp-area="" asp-controller="Account" asp-action="SignUp">
-                            <span class="glyphicon glyphicon-user"></span>
-                            Sign Up
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Account" asp-action="Login">
-                            <span class="glyphicon glyphicon-log-in"></span>
-                            Login
-                        </a>
-                    </li>
-                </ul>
-            }
-        </div>
-    </nav>
-</div>*@
-
-
+﻿@using SMIE.DAL.Extensions
 <nav class="uk-navbar-container" uk-navbar>
 
     <div class="container app-navbar-container">
@@ -54,15 +13,33 @@
         <div class="uk-navbar-right">
 
             <ul class="uk-navbar-nav">
-                
+
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li>
+                    @*<li>
                         <a asp-area="" asp-controller="Account" asp-action="Logout">
                             <span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-out"></span>
                             Logout
                         </a>
+                    </li>*@
+
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                            <span class="uk-icon uk-margin-small-right" uk-icon="icon: user"></span>
+                            @User.UserName()
+                        </a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li>
+                                    <a asp-area="" asp-controller="Account" asp-action="Logout">
+                                        <span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-out"></span>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
+
                 }
                 else
                 {
@@ -81,15 +58,15 @@
                 }
 
                 @*<li>
-                    <a href="#">Parent</a>
-                    <div class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Active</a></li>
-                            <li><a href="#">Item</a></li>
-                            <li><a href="#">Item</a></li>
-                        </ul>
-                    </div>
-                </li>*@
+                        <a href="#">Parent</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </li>*@
             </ul>
 
         </div>

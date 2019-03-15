@@ -4,8 +4,8 @@ namespace SMIE.Models
 {
     public class RegisterModel
     {
-        //[Required(ErrorMessage = "Не указан Username")]
-        //public string Username { get; set; }
+        [Required(ErrorMessage = "No user name specified")]
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "No Email specified")]
         public string Email { get; set; }

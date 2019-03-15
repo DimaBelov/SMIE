@@ -9,6 +9,8 @@ namespace SMIE.DAL.Interfaces
 
         Task<User> Get(string email, string password);
 
-        Task<bool> IsExsists(string email);
+        Task<bool> IsUserNameExsists(string email);
+
+        Task<bool> IsEmailExsists(string email);
     }
 }

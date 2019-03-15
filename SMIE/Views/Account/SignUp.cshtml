@@ -10,28 +10,35 @@
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
     <div>
         <div class="uk-margin">
+            <label asp-for="UserName" class="uk-form-label">User name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" asp-for="UserName" />
+            </div>
+            <span class="text-danger" asp-validation-for="UserName"></span>
+        </div>
+        <div class="uk-margin">
             <label asp-for="Email" class="uk-form-label">Email</label>
             <div class="uk-form-controls">
-                <input class="uk-input" type="text" asp-for="Email" />
+                <input class="uk-input" type="text" asp-for="Email"/>
             </div>
             <span class="text-danger" asp-validation-for="Email"></span>
         </div>
         <div class="uk-margin">
             <label asp-for="Password" class="uk-form-label">Password</label>
             <div class="uk-form-controls">
-                <input class="uk-input" asp-for="Password" />
+                <input class="uk-input" asp-for="Password"/>
             </div>
             <span class="text-danger" asp-validation-for="Password"></span>
         </div>
         <div class="uk-margin">
             <label asp-for="ConfirmPassword" class="uk-form-label">Confirm password</label>
             <div class="uk-form-controls">
-                <input class="uk-input" asp-for="ConfirmPassword" />
+                <input class="uk-input" asp-for="ConfirmPassword"/>
             </div>
             <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
         </div>
         <div>
-            <input type="submit" value="Sign Up" class="uk-button uk-button-primary sign-up-btn" />
+            <input type="submit" value="Sign Up" class="uk-button uk-button-primary sign-up-btn"/>
         </div>
     </div>
 </form>

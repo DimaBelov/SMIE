@@ -28,17 +28,17 @@ namespace SMIE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            if (ModelState.IsValid)
-            {
-                User user = await _userService.Get(model.Email, model.Password);
-                if (user != null)
-                {
-                    await Authenticate(model.Email); // аутентификация
+            if (!ModelState.IsValid)
+                return View(model);
 
-                    return RedirectToAction("Index", "Home");
-                }
-                ModelState.AddModelError("", "Incorrect login and (or) password");
+            var user = await _userService.Get(model.UserNameOrEmail, model.Password);
+            if (user != null)
+            {
+                await Authenticate(user); // аутентификация
+
+                return RedirectToAction("Index", "Home");
             }
+            ModelState.AddModelError("", "Incorrect login and (or) password");
             return View(model);
         }
 
@@ -52,29 +52,31 @@ namespace SMIE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(RegisterModel model)
         {
-            if (ModelState.IsValid)
-            {
-                if (!(await _userService.IsExsists(model.Email)))
-                {
-                    // добавляем пользователя в бд
-                    await _userService.Add(new User { Email = model.Email, Password = model.Password });
+            if (!ModelState.IsValid)
+                return View(model);
 
-                    //await Authenticate(model.Email); // аутентификация
-
-                    return RedirectToAction("Index", "Home");
-                }
-
+            if(await _userService.IsUserNameExsists(model.UserName))
+                ModelState.AddModelError("", "This user name is already registered");
+            else if (await _userService.IsEmailExsists(model.Email))
                 ModelState.AddModelError("", "This email is already registered");
+            else
+            {
+                await _userService.Add(new User { UserName = model.UserName, Email = model.Email, Password = model.Password });
+
+                //await Authenticate(model.Email); // аутентификация
+
+                return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
 
-        private async Task Authenticate(string userName)
+        async Task Authenticate(User user)
         {
             // создаем один claim
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName),
+                new Claim("email", user.Email)
             };
 
             // создаем объект ClaimsIdentity
