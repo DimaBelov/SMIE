@@ -15,9 +15,9 @@ namespace SMIE.Controllers
 
         public IActionResult Get()
         {
-#if DEBUG
-            Thread.Sleep(3000);
-#endif
+//#if DEBUG
+//            Thread.Sleep(3000);
+//#endif
             return ViewComponent("Catalog");
         }
     }
