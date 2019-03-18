@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 using SMIE.DAL.Interfaces;
 
@@ -15,6 +15,9 @@ namespace SMIE.Controllers
 
         public IActionResult Get()
         {
+#if DEBUG
+            Thread.Sleep(3000);
+#endif
             return ViewComponent("Catalog");
         }
     }

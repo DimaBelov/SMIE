@@ -5,5 +5,13 @@
         })
         .fail(function (error) {
             alert("error: " + error);
+        })
+        .always(function () {
+            removeCatalogSpinner();
         });
+    
+    function removeCatalogSpinner() {
+        var elem = document.getElementById('catalog-spinner');
+        elem.parentNode.removeChild(elem);
+    }
 });
