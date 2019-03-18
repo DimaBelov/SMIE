@@ -1,0 +1,50 @@
+CREATE SEQUENCE user_id_seq;
+
+CREATE TABLE public.user(
+  id integer DEFAULT nextval('user_id_seq'::regclass) NOT NULL,
+  name varchar(50) NOT NULL,
+  email varchar(100) NOT NULL,
+  password varchar(50) NOT NULL
+);
+
+CREATE OR REPLACE FUNCTION public.user_add(name varchar(50), email varchar(100), password varchar(50))
+RETURNS void
+AS $$
+BEGIN
+  INSERT INTO public.user(name, email, password)
+  VALUES (name, email, password);
+END
+$$ LANGUAGE plpgsql;
+
+CREATE TYPE public.user AS(
+  id integer,
+  name varchar(50),
+  email varchar(100),
+  password varchar(50)
+);
+
+-- DROP FUNCTION user_getby_name(character varying);
+
+CREATE OR REPLACE FUNCTION public.user_getby_name(user_name varchar(50))
+RETURNS SETOF public.user
+AS $$
+  SELECT * FROM public.user AS u
+  WHERE u.name = user_name;
+$$ LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION public.user_getby_email(user_email varchar(50))
+RETURNS SETOF public.user
+AS $$
+  SELECT * FROM public.user AS u
+  WHERE u.email = user_email;
+$$ LANGUAGE SQL;
+
+-- SELECT public.user_add('dimabelov', 'dimabelovmail@gmail.com', '1');
+
+select * from public.user_getby_name('dimabelov');
+
+select * from public.user_getby_email('dimabelovmail@gmail.com');
+
+
+
+

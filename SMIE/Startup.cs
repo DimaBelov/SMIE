@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using SMIE.Core.Data.Settings;
 using SMIE.DAL.Interfaces;
 using SMIE.DAL.Services;
 
@@ -45,6 +46,7 @@ namespace SMIE
                 });
 
             services
+                .Configure<ServersSettings>(Configuration.GetSection("ServersSettings"))
                 .AddScoped<IUserService, UserService>()
                 .AddScoped<ICatalogService, CatalogService>();
         }
