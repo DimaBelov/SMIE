@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using SMIE.Core.Data;
 using SMIE.DAL.Entities;
 using SMIE.DAL.Interfaces;
+using SMIE.DAL.Specifications;
 
 namespace SMIE.DAL.Services
 {
@@ -30,22 +29,26 @@ namespace SMIE.DAL.Services
 
         public async Task Add(User user)
         {
-            await Task.Run(() => UserDb.Add(user));
+            await ExecuteAsync(new UserAdd(user));
         }
 
         public async Task<User> Get(string userNameOrEmail, string password)
         {
-            return await Task.Run(() => UserDb.Get(userNameOrEmail, password));
+            var user = await GetAsync<User>(new UserGetByName(userNameOrEmail));
+            if (user != null)
+                return user;
+
+            return await GetAsync<User>(new UserGetByEmail(userNameOrEmail));
         }
 
-        public async Task<bool> IsUserNameExsists(string email)
+        public async Task<bool> IsUserNameExsists(string name)
         {
-            return await Task.Run(() => UserDb.IsUserNameExsists(email));
+            return await GetAsync<User>(new UserGetByName(name)) != null;
         }
 
         public async Task<bool> IsEmailExsists(string email)
         {
-            return await Task.Run(() => UserDb.IsEmailExsists(email));
+            return await GetAsync<User>(new UserGetByEmail(email)) != null;
         }
     }
 }
