@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SMIE.Core.Data;
 using SMIE.DAL.Entities;
 using SMIE.DAL.Interfaces;
 
@@ -21,8 +22,12 @@ namespace SMIE.DAL.Services
         public static bool IsEmailExsists(string email) => _db.Any(u => u.Email.Equals(email));
     }
 
-    public class UserService : IUserService
+    public class UserService : AppService, IUserService
     {
+        public UserService(IGenericRepository repository) : base(repository)
+        {
+        }
+
         public async Task Add(User user)
         {
             await Task.Run(() => UserDb.Add(user));

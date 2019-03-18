@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using SMIE.Core.Data;
 using SMIE.Core.Data.Settings;
 using SMIE.DAL.Interfaces;
 using SMIE.DAL.Services;
@@ -14,6 +15,8 @@ namespace SMIE
 {
     public class Startup
     {
+        const string SMIE_CONNECTION_NAME = "SMIE";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -47,6 +50,11 @@ namespace SMIE
 
             services
                 .Configure<ServersSettings>(Configuration.GetSection("ServersSettings"))
+                .AddSingleton<IProviderFactory, ProviderFactory>()
+                .AddScoped<IDbConnectionsManager, ConnectionsManager>()
+                .AddScoped<IGenericRepository>(provider => new GenericRepository(
+                    provider.GetService<IDbConnectionsManager>(),
+                    SMIE_CONNECTION_NAME))
                 .AddScoped<IUserService, UserService>()
                 .AddScoped<ICatalogService, CatalogService>();
         }
