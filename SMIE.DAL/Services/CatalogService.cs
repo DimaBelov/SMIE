@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SMIE.Core.Data;
 using SMIE.DAL.Entities;
 using SMIE.DAL.Interfaces;
+using SMIE.DAL.Specifications;
 
 namespace SMIE.DAL.Services
 {
@@ -16,16 +18,38 @@ namespace SMIE.DAL.Services
         };
     }
 
-    public class CatalogService : ICatalogService
+    public class CatalogService : AppService, ICatalogService
     {
+        static readonly List<Video> _cache = new List<Video>();
+        static readonly object _cacheLock = new object();
+
+        public CatalogService(IGenericRepository repository) : base(repository)
+        {
+        }
+
         public IEnumerable<Video> GetAll()
         {
-            return VideoDb.Videos;
+            var result = GetAll<Video>(new VideoGetAll());
+            Task.Run(() => AddToCache(result));
+            return result;
         }
 
         public Video Get(int id)
-        {   //TODO брать из кэша
-            return VideoDb.Videos.FirstOrDefault(v => v.Id == id);
+        {
+            return _cache.Count == 0 ?
+                Get<Video>(new VideoGetById(id)) :
+                _cache.FirstOrDefault(v => v.Id == id);
+
+            //return Get<Video>(new VideoGetById(id));
+        }
+
+        static void AddToCache(IEnumerable<Video> videos)
+        {
+            lock (_cacheLock)
+            {
+                _cache.Clear();
+                _cache.AddRange(videos);
+            }
         }
     }
 }

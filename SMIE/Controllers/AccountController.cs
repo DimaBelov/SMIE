@@ -65,7 +65,7 @@ namespace SMIE.Controllers
 
                 //await Authenticate(model.Email); // аутентификация
 
-                return RedirectToAction("Index", "Home");
+                return View("SignUpSuccess");
             }
             return View(model);
         }
