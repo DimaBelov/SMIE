@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         @*<link rel="stylesheet" href="~/dist/styles/bootstrap-material-design.min.css" />*@
         <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit.min.css" />
-        <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit-rtl.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -18,7 +17,6 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         @*<link rel="stylesheet" href="~/dist/styles/bootstrap-material-design.min.css" />*@
         <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit.min.css" />
-        <link rel="stylesheet" href="~/lib/uikit-3.0.3/css/uikit-rtl.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     @RenderSection("Styles", required: false)
@@ -35,6 +33,13 @@
             <p>&copy; 2019 - SMIE</p>
         </footer>
     </div>
+
+    <script>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @: window.user = {username: "@User.Identity.Name"}
+        }
+    </script>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

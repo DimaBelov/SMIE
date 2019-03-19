@@ -6,6 +6,7 @@ var minifyCss = require('gulp-csso');
 var minifyJs = require('gulp-uglify');
 var rename = require('gulp-rename');
 var plumber = require('gulp-plumber');
+var babel = require('gulp-babel');
 
 // Styles -----------------------------------------------------------------
 
@@ -47,7 +48,10 @@ var componentsScripts = './wwwroot/js/components/**/*.js';
 gulp.task('js-pages', function () {
     return gulp.src(pageScripts)
         .pipe(plumber({ errorHandler: handleError }))
-        .pipe(minifyJs())
+        //.pipe(babel({
+        //    presets: ['es2015']
+        //}))
+        //.pipe(minifyJs())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest(scriptsStorage + 'pages/'));
 });
@@ -55,7 +59,10 @@ gulp.task('js-pages', function () {
 gulp.task('js-components', function () {
     return gulp.src(componentsScripts)
         .pipe(plumber({ errorHandler: handleError }))
-        .pipe(minifyJs())
+        //.pipe(babel({
+        //    presets: ['es2015']
+        //}))
+        //.pipe(minifyJs())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest(scriptsStorage + 'components/'));
 });
