@@ -17,7 +17,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <a asp-area="" asp-controller="Personal" asp-action="Personal">
                             <span class="uk-icon uk-margin-small-right" uk-icon="icon: user"></span>
                             @User.UserName()
                         </a>

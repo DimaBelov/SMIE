@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using SMIE.DAL.Extensions
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -37,7 +38,7 @@
     <script>
         @if (User.Identity.IsAuthenticated)
         {
-            @: window.user = {username: "@User.Identity.Name"}
+            @: window.user = {username: "@User.Identity.Name", email: "@User.Email()"}
         }
     </script>
 

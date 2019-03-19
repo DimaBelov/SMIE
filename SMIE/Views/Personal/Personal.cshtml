@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Personal";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div id="personal-data">
+    <p>Username: <span id="user-name"></span></p>
+    <p>Email: <span id="user-email"></span></p>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="/dist/styles/pages/personal/personal.min.css" />
+}
+
+@section Scripts
+{
+    <script src="/dist/scripts/pages/personal/personal.min.js"></script>
+}
