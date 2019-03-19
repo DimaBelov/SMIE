@@ -3,9 +3,13 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<div id="personal-data">
-    <p>Username: <span id="user-name"></span></p>
-    <p>Email: <span id="user-email"></span></p>
+<div>
+    <dl class="uk-description-list">
+        <dt>Username</dt>
+        <dd id="user-name"></dd>
+        <dt>Email</dt>
+        <dd id="user-email"></dd>
+    </dl>
 </div>
 
 @section Styles
