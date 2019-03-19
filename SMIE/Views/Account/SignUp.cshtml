@@ -7,35 +7,35 @@
 <h2>Sign Up</h2>
 
 <form class="uk-form-stacked" asp-action="SignUp" asp-controller="Account" asp-anti-forgery="true">
-    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <div class="uk-text-danger" asp-validation-summary="ModelOnly"></div>
     <div>
         <div class="uk-margin">
             <label asp-for="UserName" class="uk-form-label">User name</label>
             <div class="uk-form-controls">
                 <input class="uk-input" type="text" asp-for="UserName" />
             </div>
-            <span class="text-danger" asp-validation-for="UserName"></span>
+            <span class="uk-text-danger" asp-validation-for="UserName"></span>
         </div>
         <div class="uk-margin">
             <label asp-for="Email" class="uk-form-label">Email</label>
             <div class="uk-form-controls">
                 <input class="uk-input" type="text" asp-for="Email"/>
             </div>
-            <span class="text-danger" asp-validation-for="Email"></span>
+            <span class="uk-text-danger" asp-validation-for="Email"></span>
         </div>
         <div class="uk-margin">
             <label asp-for="Password" class="uk-form-label">Password</label>
             <div class="uk-form-controls">
                 <input class="uk-input" asp-for="Password"/>
             </div>
-            <span class="text-danger" asp-validation-for="Password"></span>
+            <span class="uk-text-danger" asp-validation-for="Password"></span>
         </div>
         <div class="uk-margin">
             <label asp-for="ConfirmPassword" class="uk-form-label">Confirm password</label>
             <div class="uk-form-controls">
                 <input class="uk-input" asp-for="ConfirmPassword"/>
             </div>
-            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+            <span class="uk-text-danger" asp-validation-for="ConfirmPassword"></span>
         </div>
         <div>
             <input type="submit" value="Sign Up" class="uk-button uk-button-primary sign-up-btn"/>

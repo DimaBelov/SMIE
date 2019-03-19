@@ -1,16 +1,25 @@
-﻿.catalog-item > a:hover {
-    text-decoration: none;
+﻿#catalog-spinner {
+    width: 90px;
+}
+
+.catalog-grid-card {
+    cursor: pointer;
+    /*background: gainsboro;*/
 }
 
 .catalog-item-title {
     font-weight: bold;
 }
 
-.catalog-item-poster {
-    width: 100px;
-    height: 100px;
+.catalog-list .catalog-item-poster {
+    cursor: pointer;
 }
 
-#catalog-spinner {
-    width: 90px;
+.catalog-list .catalog-item > a:hover {
+    text-decoration: none;
+}
+
+.catalog-list .catalog-item-poster {
+    width: 100px;
+    height: 100px;
 }

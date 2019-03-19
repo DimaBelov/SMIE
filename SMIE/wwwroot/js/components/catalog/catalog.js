@@ -9,6 +9,16 @@
     window.open(`/Video/${id}`, '_self');   
 }
 
+function videoPosterMouseEnter(id) {
+    console.log(id);
+    UIkit.modal(document.getElementById(`video-tooltip-${id}`)).show();
+}
+
+function videoPosterMouseLeave(id) {
+    console.log(id);
+    UIkit.modal(document.getElementById(`video-tooltip-${id}`)).hide();
+}
+
 $(document).ready(function () {
     $.get("Catalog/Get")
         .done(function (data) {
