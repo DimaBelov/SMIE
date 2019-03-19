@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SMIE.DAL.Entities;
 using SMIE.DAL.Interfaces;
 
 namespace SMIE.Controllers
 {
+    [Authorize]
     public class VideoController : Controller
     {
         readonly ICatalogService _catalogService;

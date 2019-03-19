@@ -3,15 +3,13 @@
 }
 
 .catalog-grid-card {
-    cursor: pointer;
-    /*background: gainsboro;*/
 }
 
 .catalog-item-title {
     font-weight: bold;
 }
 
-.catalog-list .catalog-item-poster {
+.catalog-item-poster {
     cursor: pointer;
 }
 
@@ -22,4 +20,13 @@
 .catalog-list .catalog-item-poster {
     width: 100px;
     height: 100px;
+}
+
+.video-details-label {
+    cursor: pointer;
+}
+
+.video-details .watch-link-header {
+    margin-top: 20px;
+    width: 56px;
 }
