@@ -40,3 +40,10 @@ body {
 .app-navbar-container {
     display: flex;
 }
+
+/*UIKit overrides Вынести в отдельный файл*/
+.uk-notification-message-danger {
+    /*color: #f0506e;*/
+    background: tomato;
+    color: white;
+}

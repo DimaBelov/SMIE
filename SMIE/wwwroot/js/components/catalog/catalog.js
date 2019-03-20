@@ -25,7 +25,9 @@ $(document).ready(function () {
             $("#catalog").html(data);
         })
         .fail(function (error) {
-            alert("error: " + error);
+            console.log(error);
+            var message = error.responseJSON != null ? error.responseJSON.error : error.responseText;
+            UIkit.notification({ message: message, pos: 'top-right', status: 'danger', timeout: 0 });
         })
         .always(function () {
             removeCatalogSpinner();

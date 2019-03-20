@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using SMIE.Core.Data;
 using SMIE.Core.Data.Settings;
 using SMIE.DAL.Interfaces;
@@ -17,15 +19,23 @@ namespace SMIE
     {
         const string SMIE_CONNECTION_NAME = "SMIE";
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
         {
             Configuration = configuration;
+            
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configuration)
+                .CreateLogger();
+
+            loggerFactory.AddSerilog();
         }
 
         public IConfiguration Configuration { get; }
         
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

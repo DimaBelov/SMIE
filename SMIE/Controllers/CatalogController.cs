@@ -1,9 +1,13 @@
-﻿using System.Threading;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using SMIE.Core.Web.Attributes;
 using SMIE.DAL.Interfaces;
+using SMIE.Models;
 
 namespace SMIE.Controllers
 {
+    [ApiExceptionFilter]
     public class CatalogController : Controller
     {
         readonly ICatalogService _catalogService;
@@ -15,10 +19,16 @@ namespace SMIE.Controllers
 
         public IActionResult Get()
         {
-//#if DEBUG
-//            Thread.Sleep(3000);
-//#endif
-            return ViewComponent("Catalog");
+            //return ViewComponent("Catalog");
+            return PartialView("_CatalogPartial", new CatalogModel
+            {
+                Videos = _catalogService.GetAll().ToList()
+            });
+        }
+
+        public IActionResult Test()
+        {
+            throw new Exception("Test exception");
         }
     }
 }

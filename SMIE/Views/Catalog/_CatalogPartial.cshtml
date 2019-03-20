@@ -1,16 +1,89 @@
-﻿
+﻿@model SMIE.Models.CatalogModel
+
 <div>
-    Catalog view
+    <div id="not-authenticated-dialog" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <p>
+                You need
+                <a asp-area="" asp-controller="Account" asp-action="Login">
+                    login
+                </a>
+                to watch the video.
+            </p>
+        </div>
+    </div>
+
+
+
+    <div class="uk-child-width-1-4@s uk-text-center catalog-grid" uk-grid>
+        @foreach (var item in Model.Videos)
+        {
+            <div>
+                <div class="uk-card uk-card-default uk-card-body catalog-grid-card"
+                     uk-tooltip="title: @item.Description; pos: bottom">
+
+                    <img class="catalog-item-poster" src="@item.PosterLink" onclick="openVideo(@item.Id)" />
+                    <div style="display: inline-block;">
+                        <span class="catalog-item-title">@item.Name</span>
+                        <div>
+                            <span class="uk-text-primary video-details-label" uk-toggle="target: #video-details-@item.Id">more details...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="video-details-@item.Id" class="uk-flex-top video-details" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <span class="catalog-item-title">@item.Name</span>
+                        @*<img class="catalog-item-poster" src="@item.PosterLink" onclick="openVideo(@item.Id)" />*@
+                        <div>
+                            <span>@item.Description</span>
+                        </div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <h4 class="watch-link-header uk-margin-auto">
+                                <a class="uk-link-heading" href="/Video/@item.Id">
+                                    Watch
+                                </a>
+                            </h4>
+                        }
+                        else
+                        {
+                            <p>
+                                You need
+                                <a asp-area="" asp-controller="Account" asp-action="Login">
+                                    login
+                                </a>
+                                to watch the video.
+                            </p>
+                        }
+                    </div>
+                </div>
+
+
+                @*<div uk-drop>
+                        <div class="uk-card uk-card-body uk-card-default">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+                    </div>*@
+
+
+
+            </div>
+        }
+    </div>
+
+    @*<ul class="uk-list uk-list-divider catalog-list">
+            @foreach (var item in Model.Videos)
+            {
+                <li class="catalog-item">
+                    <img class="catalog-item-poster" src="@item.PosterLink" onclick="openVideo(@item.Id)"/>
+                    <div style="display: inline-block;">
+                        <span class="catalog-item-title">@item.Name</span>
+                        <div>
+                            <span>@item.Description</span>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>*@
 </div>
-
-@section Styles {
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/dist/styles/components/catalog/catalog.min.css" rel="stylesheet" />
-}
-
-@section Scripts {
-    <script src="/dist/scripts/components/catalog/catalog.min.js"></script>
-    <script>
-        console.log('Catalog component 2');
-    </script>
-}
